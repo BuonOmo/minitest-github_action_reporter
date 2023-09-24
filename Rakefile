@@ -4,7 +4,7 @@ require 'rake/testtask'
 
 # MiniTest Task
 Rake::TestTask.new do |test|
-  test.pattern = 'spec/**/*_spec.rb'
+  test.pattern = 'test/**/*_test.rb'
 end
 
 # We want the test task to be default.
