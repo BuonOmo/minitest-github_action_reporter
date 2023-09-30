@@ -17,14 +17,14 @@ module Minitest
       if failures + errors == 0
         puts "Every #{count} tests passed :taco:"
       else
-        io.puts
-        io.puts "| | Name | Message |"
-        io.puts "| --- | ---- | ------ |"
+        io.puts "<table>"
+        io.puts "<tr><th>Name</th><th>Message</th></tr>"
         results.reject(&:skipped?).each_with_index do |result, i|
           loc = result.failure.location
           name = "#{result.class_name}##{result.name}"
-          io.puts "| #{i+1} | [#{name}](#{gh_link(loc)}) | #{result.failure.message.gsub("\n", "\t")} |"
+          io.puts "<tr><td>#{i+1}</td><td><a href='#{gh_link(loc)}'>#{name}</a></td><td><pre>#{result.failure.message}</pre></td></tr>"
         end
+        io.puts "</table>"
       end
     end
 
@@ -35,7 +35,6 @@ module Minitest
     end
 
     # TODO: we can guess further, for instance if a Rails.root exist.
-    # TODO: for ar tests, doesn't work.
     def gh_link(loc)
       path, _, line = loc[%r(/(?:test|spec)/.*)][1..].rpartition(":")
 

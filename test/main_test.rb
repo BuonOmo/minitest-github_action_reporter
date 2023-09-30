@@ -6,7 +6,7 @@ end
 
 require 'minitest/autorun'
 
-require_relative '../lib/minitest/github_action_plugin'
+require_relative '../lib/minitest/github_action_reporter_plugin'
 
 class Test < Minitest::Test
   def test_that_passes
