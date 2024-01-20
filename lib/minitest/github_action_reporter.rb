@@ -22,7 +22,7 @@ module Minitest
         results.reject(&:skipped?).each_with_index do |result, i|
           loc = result.failure.location
           name = "#{result.class_name}##{result.name}"
-          io.puts "<tr><td>#{i+1}</td><td><a href='#{gh_link(loc)}'>#{name}</a></td><td><pre>#{result.failure.message}</pre></td></tr>"
+          io.puts "<tr><td>#{i+1}</td><td><a href='#{gh_link(loc)}'>#{name}</a></td><td><pre>#{result.failure.message.chomp}\n</pre></td></tr>"
         end
         io.puts "</table>"
       end
