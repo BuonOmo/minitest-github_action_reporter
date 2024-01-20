@@ -36,7 +36,7 @@ module Minitest
 
     # TODO: we can guess further, for instance if a Rails.root exist.
     def gh_link(loc)
-      path, _, line = loc[%r(/(?:test|spec)/.*)][1..].rpartition(":")
+      path, _, line = loc[%r(/(?:test|spec|lib)/.*)][1..].rpartition(":")
 
       "#{ENV["GITHUB_SERVER_URL"]}/#{ENV["GITHUB_REPOSITORY"]}/blob/#{ENV["GITHUB_SHA"]}/#{path}#L#{line}"
     end
