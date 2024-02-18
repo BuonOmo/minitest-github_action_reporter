@@ -10,7 +10,9 @@ module Minitest
 
     def report
       super
-      io.puts "# Test summary"
+      io.puts "<details>"
+      io.puts
+      io.puts "<summary><h1>Test summary</h1></summary>"
       io.puts
       io.puts statistics
 
@@ -25,6 +27,8 @@ module Minitest
           io.puts "<tr><td>#{i+1}</td><td><a href='#{gh_link(loc)}'>#{name}</a></td><td><pre>#{result.failure.message.chomp}\n</pre></td></tr>"
         end
         io.puts "</table>"
+        io.puts
+        io.puts "</details>"
       end
     end
 
